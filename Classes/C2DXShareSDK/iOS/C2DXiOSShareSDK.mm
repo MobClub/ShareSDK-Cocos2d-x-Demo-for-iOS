@@ -19,13 +19,12 @@
 
 #import <ShareSDK/ShareSDK+Base.h>
 
-//#define IMPORT_SINA_WEIBO_LIB               //导入新浪微博库，如果不需要新浪微博客户端分享可以注释此行
+#define IMPORT_SINA_WEIBO_LIB               //导入新浪微博库，如果不需要新浪微博客户端分享可以注释此行
 #define IMPORT_QZONE_QQ_LIB                 //导入腾讯开发平台库，如果不需要QQ空间分享、SSO或者QQ好友分享可以注释此行
-//#define IMPORT_RENREN_LIB                   //导入人人库，如果不需要人人SSO，可以注释此行
-//#define IMPORT_GOOGLE_PLUS_LIB              //导入Google+库，如果不需要Google+分享可以注释此行
+#define IMPORT_RENREN_LIB                   //导入人人库，如果不需要人人SSO，可以注释此行
 #define IMPORT_WECHAT_LIB                   //导入微信库，如果不需要微信分享可以注释此行
-//#define IMPORT_ALIPAY_LIB                   //导入支付宝分享库，如果不需要支付宝分享可以注释此行
-//#define IMPORT_KAKAO_LIB                    //导入Kakao库，如果不需要Kakao分享可以注释此行
+#define IMPORT_ALIPAY_LIB                   //导入支付宝分享库，如果不需要支付宝分享可以注释此行
+#define IMPORT_KAKAO_LIB                    //导入Kakao库，如果不需要Kakao分享可以注释此行
 
 #ifdef IMPORT_SINA_WEIBO_LIB
 #import "WeiboSDK.h"
@@ -38,10 +37,6 @@
 
 #ifdef IMPORT_RENREN_LIB
 #import <RennSDK/RennSDK.h>
-#endif
-
-#ifdef IMPORT_GOOGLE_PLUS_LIB
-#import <GooglePlus/GooglePlus.h>
 #endif
 
 #ifdef IMPORT_WECHAT_LIB
@@ -57,7 +52,6 @@
 #endif
 
 static UIView *_refView = nil;
-static int kReqID = 0;
 
 using namespace cn::sharesdk;
 
@@ -382,13 +376,6 @@ void C2DXiOSShareSDK::registerAppAndSetPlatformConfig(const char *appKey, C2DXDi
                              break;
 #endif
                              
-#ifdef IMPORT_GOOGLE_PLUS_LIB
-                         case SSDKPlatformTypeGooglePlus:
-                             [ShareSDKConnector connectGooglePlus:[GPPSignIn class]
-                                                       shareClass:[GPPShare class]];
-                             break;
-#endif
-                             
 #ifdef IMPORT_WECHAT_LIB
                          case SSDKPlatformTypeWechat:
                              [ShareSDKConnector connectWeChat:[WXApi class]];
@@ -540,8 +527,7 @@ id convertPublishContent(C2DXDictionary *content)
                     contentType = (SSDKContentType)SSDKContentTypeText;
                     break;
                 case C2DXContentTypeImage:
-                case C2DXContentTypeNonGif:
-                case C2DXContentTypeGif:
+                case C2DXContentTypeEmoji:
                     contentType = (SSDKContentType)SSDKContentTypeImage;
                     break;
                 case C2DXContentTypeWebPage:
@@ -557,6 +543,7 @@ id convertPublishContent(C2DXDictionary *content)
                     contentType = (SSDKContentType)SSDKContentTypeApp;
                     break;
                 case C2DXContentTypeAuto:
+                case C2DXContentTypeFile:
                     contentType = (SSDKContentType)SSDKContentTypeAuto;
                 default:
                     break;
@@ -576,13 +563,6 @@ id convertPublishContent(C2DXDictionary *content)
 }
 
 #pragma mark 分享平台授权
-
-void C2DXiOSShareSDK::authorize(C2DXPlatType platType, C2DXAuthResultEvent callback)
-{
-    kReqID++;
-    C2DXiOSShareSDK:authorize(kReqID, platType, callback);
-}
-
 void C2DXiOSShareSDK::authorize(int reqID, C2DXPlatType platType, C2DXAuthResultEvent callback)
 {
     [ShareSDK authorize:(SSDKPlatformType)platType
@@ -645,13 +625,6 @@ bool C2DXiOSShareSDK::isClientInstalled(C2DXPlatType platType)
 }
 
 #pragma mark 获取授权用户信息
-
-void C2DXiOSShareSDK::getUserInfo(C2DXPlatType platType, C2DXGetUserInfoResultEvent callback)
-{
-    kReqID ++;
-    C2DXiOSShareSDK::getUserInfo(kReqID, platType, callback);
-}
-
 void C2DXiOSShareSDK::getUserInfo(int reqID,C2DXPlatType platType, C2DXGetUserInfoResultEvent callback)
 {
     [ShareSDK getUserInfo:(SSDKPlatformType)platType
@@ -696,13 +669,6 @@ void C2DXiOSShareSDK::getUserInfo(int reqID,C2DXPlatType platType, C2DXGetUserIn
 }
 
 #pragma mark 简单分享
-
-void C2DXiOSShareSDK::shareContent(C2DXPlatType platType, C2DXDictionary *content, C2DXShareResultEvent callback)
-{
-    kReqID ++;
-    C2DXiOSShareSDK::shareContent(kReqID, platType, content, callback);
-}
-
 void C2DXiOSShareSDK::shareContent(int reqID,C2DXPlatType platType, C2DXDictionary *content, C2DXShareResultEvent callback)
 {
     NSMutableDictionary *parameters = convertPublishContent(content);
@@ -744,12 +710,6 @@ void C2DXiOSShareSDK::shareContent(int reqID,C2DXPlatType platType, C2DXDictiona
 }
 
 #pragma mark 一键分享
-void C2DXiOSShareSDK::oneKeyShareContent(C2DXArray *platTypes, C2DXDictionary *content, C2DXShareResultEvent callback)
-{
-    kReqID ++;
-    C2DXiOSShareSDK::oneKeyShareContent(kReqID, platTypes, content, callback);
-}
-
 void C2DXiOSShareSDK::oneKeyShareContent(int reqID,C2DXArray *platTypes, C2DXDictionary *content, C2DXShareResultEvent callback)
 {
     NSMutableArray *shareList = nil;
@@ -810,12 +770,6 @@ void C2DXiOSShareSDK::oneKeyShareContent(int reqID,C2DXArray *platTypes, C2DXDic
 }
 
 #pragma mark 弹出分享菜单进行分享
-void C2DXiOSShareSDK::showShareMenu(C2DXArray *platTypes, C2DXDictionary *content, C2DXPoint pt, C2DXShareResultEvent callback)
-{
-    kReqID ++;
-    C2DXiOSShareSDK::showShareMenu(kReqID, platTypes, content, pt, callback);
-}
-
 void C2DXiOSShareSDK::showShareMenu(int reqID,C2DXArray *platTypes, C2DXDictionary *content, C2DXPoint pt, C2DXShareResultEvent callback)
 {
     NSMutableArray *shareList = nil;
@@ -892,13 +846,6 @@ void C2DXiOSShareSDK::showShareMenu(int reqID,C2DXArray *platTypes, C2DXDictiona
 }
 
 #pragma mark 弹出分享编辑框
-
-void C2DXiOSShareSDK::showShareEditView(C2DXPlatType platType, C2DXDictionary *content, C2DXShareResultEvent callback)
-{
-    kReqID++;
-    C2DXiOSShareSDK::showShareEditView(kReqID, platType, content, callback);
-}
-
 void C2DXiOSShareSDK::showShareEditView(int reqID,C2DXPlatType platType, C2DXDictionary *content, C2DXShareResultEvent callback)
 {
     NSMutableDictionary *shareParams;
@@ -944,12 +891,6 @@ void C2DXiOSShareSDK::showShareEditView(int reqID,C2DXPlatType platType, C2DXDic
             callback(reqID,(C2DXResponseState)state,(C2DXPlatType)platformType,userInfoDict);
         }
     }];
-}
-
-void C2DXiOSShareSDK::getFriendList(C2DXPlatType platType,int count, int page, C2DXAddFriendResultEvent callback)
-{
-    kReqID++;
-    C2DXiOSShareSDK::getFriendList(kReqID, platType, count, page, callback);
 }
 
 void C2DXiOSShareSDK::getFriendList(int reqID,C2DXPlatType platType,int count, int page, C2DXAddFriendResultEvent callback)
@@ -998,12 +939,6 @@ void C2DXiOSShareSDK::getFriendList(int reqID,C2DXPlatType platType,int count, i
                   callback(reqID,(C2DXResponseState)state,(C2DXPlatType)platType,userInfoDict);
               }
           }];
-}
-
-void C2DXiOSShareSDK::addFriend(C2DXPlatType platType,const char* account ,C2DXGetFriendsResultEvent callback)
-{
-    kReqID++;
-    C2DXiOSShareSDK::addFriend(kReqID, platType, account, callback);
 }
 
 void C2DXiOSShareSDK::addFriend(int reqID,C2DXPlatType platType,const char* account ,C2DXGetFriendsResultEvent callback)
@@ -1059,6 +994,5 @@ void C2DXiOSShareSDK::alertLog(const char *msg)
 //                                              cancelButtonTitle:@"OK"
 //                                              otherButtonTitles:nil, nil];
 //    [alertView show];
-//    [alertView release];
 }
 

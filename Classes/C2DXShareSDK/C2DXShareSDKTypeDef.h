@@ -50,7 +50,7 @@ namespace cn
          */
         enum C2DXPlatType
         {
-            C2DXPlatTypeUnknown = 0,
+        	C2DXPlatTypeUnknown = 0,
             C2DXPlatTypeSinaWeibo = 1,         /**< 新浪微博 */
             C2DXPlatTypeTencentWeibo = 2,      /**< 腾讯微博 */
             C2DXPlatTypeDouBan = 5,            /**< 豆瓣社区 */
@@ -86,33 +86,32 @@ namespace cn
             C2DXPlatTypeYiXinTimeline = 39,    /**< 易信朋友圈 */
             C2DXPlatTypeYiXinFav = 40,         /**< 易信收藏 */
             C2DXPlatTypeMingDao = 41,          /**< 明道 */
-            C2DXPlatTypeLine = 42,             /**< Line */
-            C2DXPlatTypeWhatsApp = 43,         /**< Whats App */
-            C2DXPlatTypeKakaoTalk = 44,        /**< KakaoTalk */
-            C2DXPlatTypeKakaoStory = 45,       /**< KakaoStory */
-            C2DXPlatTypeFacebookMessenger = 46,/**< FacebookMessenger */
-            C2DXPlatTypeBluetooth = 48,        /**< Bluetooth */
-            C2DXPlatTypeAlipay = 50,           /**< Alipay */
-            C2DXPlatTypeWechatPlatform = 997,  /**< Wechat Series */
-            C2DXPlatTypeQQPlatform = 998,	   /**< QQ Series */
-            C2DXPlatTypeAny = 999 			   /**< 任意平台 */
+    		C2DXPlatTypeLine = 42,             /**< Line */
+    		C2DXPlatTypeWhatsApp = 43,         /**< Whats App */
+    		C2DXPlatTypeKakaoTalk = 44,        /**< KakaoTalk */
+    		C2DXPlatTypeKakaoStory = 45,       /**< KakaoStory */ 
+    		C2DXPlatTypeFacebookMessenger = 46,/**< FacebookMessenger */
+    		C2DXPlatTypeBluetooth = 48,        /**< Bluetooth */
+    		C2DXPlatTypeAlipay = 50,           /**< Alipay */
+    		C2DXPlatTypeWechatPlatform = 997,  /**< Wechat Series */
+    		C2DXPlatTypeQQPlatform = 998,	   /**< QQ Series */
+    		C2DXPlatTypeAny = 999 			   /**< 任意平台 */
         };
-        
+
         /**
          *	@brief	内容类型
          */
         enum C2DXContentType
         {
-            C2DXContentTypeText = 0, /**< 文本 */
-            C2DXContentTypeImage = 1, /**< 图片 */
-            C2DXContentTypeWebPage = 2, /**< 网页 */
-            C2DXContentTypeMusic = 3, /**< 音乐 */
-            C2DXContentTypeVideo = 4, /**< 视频 */
-            C2DXContentTypeApp = 5, /**< 应用,仅供微信使用 */
-            C2DXContentTypeNonGif = 6, /**< 非Gif消息,仅供微信使用 */
-            C2DXContentTypeGif = 7,  /**< Gif消息,仅供微信使用 */
+            C2DXContentTypeAuto = 0,  /**< 自动判断发送类型，避免部分平台不支持某些类型，仅供iOS端使用 */
+            C2DXContentTypeText = 1, /**< 文本 */
+            C2DXContentTypeImage = 2, /**< 图片 */
+            C2DXContentTypeWebPage = 4, /**< 网页 */
+            C2DXContentTypeMusic = 5, /**< 音乐 */
+            C2DXContentTypeVideo = 6, /**< 视频 */
+            C2DXContentTypeApp = 7, /**< 应用,仅供微信使用 */
             C2DXContentTypeFile = 8, /**< 文件消息,仅供微信使用 */
-            C2DXContentTypeAuto = 9  /**< 自动判断发送类型，避免部分平台不支持某些类型，仅供iOS端使用 */
+            C2DXContentTypeEmoji = 9 /**< 表情消息,仅供微信使用 */
         };
         
         /**
@@ -125,13 +124,13 @@ namespace cn
             C2DXResponseStateFail = 2, /**< 失败 */
             C2DXResponseStateCancel = 3 /**< 取消 */
         };
-        
+                
         /**
          *	@brief	授权回调事件
          */
         typedef void(*C2DXAuthResultEvent) (int reqID, C2DXResponseState state, C2DXPlatType platType, C2DXDictionary *res);
         
-        /**
+        /** 
          *	@brief	获取用户信息回调事件
          */
         typedef void(*C2DXGetUserInfoResultEvent) (int reqID, C2DXResponseState state, C2DXPlatType platType, C2DXDictionary *res);
@@ -140,12 +139,12 @@ namespace cn
          *	@brief	分享回调事件
          */
         typedef void(*C2DXShareResultEvent) (int reqID, C2DXResponseState state, C2DXPlatType platType, C2DXDictionary *res);
-        
+
         /**
          *	@brief	关注好友回调事件
          */
         typedef void(*C2DXAddFriendResultEvent) (int reqID, C2DXResponseState state, C2DXPlatType platType,  C2DXDictionary *res);
-        
+		
         /**
          *	@brief	获取好友列表回调事件
          */

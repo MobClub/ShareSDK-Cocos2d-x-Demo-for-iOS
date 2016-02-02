@@ -39,7 +39,6 @@ namespace cn
              *	@param 	platType 	平台类型
              *	@param 	callback 	回调方法
              */
-            static void authorize(C2DXPlatType platType, C2DXAuthResultEvent callback);
             static void authorize(int reqID, C2DXPlatType platType, C2DXAuthResultEvent callback);
             
             /**
@@ -73,7 +72,6 @@ namespace cn
              *	@param 	platType 	平台类型
              *	@param 	callback 	回调方法
              */
-            static void getUserInfo(C2DXPlatType platType, C2DXGetUserInfoResultEvent callback);
             static void getUserInfo(int reqID,C2DXPlatType platType, C2DXGetUserInfoResultEvent callback);
             
 //            /**
@@ -91,7 +89,6 @@ namespace cn
              *	@param 	content 	分享内容
              *	@param 	callback 	回调方法
              */
-            static void shareContent(C2DXPlatType platType, C2DXDictionary *content, C2DXShareResultEvent callback);
             static void shareContent(int reqID,C2DXPlatType platType, C2DXDictionary *content, C2DXShareResultEvent callback);
 
             /**
@@ -102,7 +99,6 @@ namespace cn
              *	@param 	content 	分享内容
              *	@param 	callback 	回调方法
              */
-            static void oneKeyShareContent(C2DXArray *platTypes, C2DXDictionary *content, C2DXShareResultEvent callback);
             static void oneKeyShareContent(int reqID,C2DXArray *platTypes, C2DXDictionary *content, C2DXShareResultEvent callback);
             
             /**
@@ -114,7 +110,6 @@ namespace cn
              *	@param 	pt          弹出分享菜单参位置，仅用于设置iPad分享菜单弹出
              *	@param 	callback 	回调方法
              */
-            static void showShareMenu(C2DXArray *platTypes, C2DXDictionary *content, C2DXPoint pt, C2DXShareResultEvent callback);
             static void showShareMenu(int reqID,C2DXArray *platTypes, C2DXDictionary *content, C2DXPoint pt, C2DXShareResultEvent callback);
             
             /**
@@ -125,7 +120,6 @@ namespace cn
              *	@param 	content 	分享内容
              *	@param 	callback 	回调方法
              */
-            static void showShareEditView(C2DXPlatType platType, C2DXDictionary *content, C2DXShareResultEvent callback);
             static void showShareEditView(int reqID,C2DXPlatType platType, C2DXDictionary *content, C2DXShareResultEvent callback);
             
             /**
@@ -136,7 +130,6 @@ namespace cn
              *	@param 	content 	分享内容
              *	@param 	callback 	回调方法
              */
-            static void getFriendList(C2DXPlatType platType,int count, int page, C2DXAddFriendResultEvent callback);
             static void getFriendList(int reqID,C2DXPlatType platType,int count, int page, C2DXAddFriendResultEvent callback);
             
             /**
@@ -147,7 +140,6 @@ namespace cn
              *	@param 	content 	分享内容
              *	@param 	callback 	回调方法
              */
-            static void addFriend(C2DXPlatType platType,const char* account,C2DXGetFriendsResultEvent callback);
             static void addFriend(int reqID,C2DXPlatType platType,const char* account,C2DXGetFriendsResultEvent callback);
             
             /**
