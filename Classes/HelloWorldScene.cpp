@@ -563,7 +563,7 @@ void HelloWorld::addFriendBtnClickHandler(cocos2d::Ref *pSender)
 
 void HelloWorld::shareWithConFileBtnClickHandler(cocos2d::Ref *pSender)
 {
-    C2DXShareSDK::shareWithConfigurationFile("mob", cn::sharesdk::C2DXPlatTypeSinaWeibo, NULL, shareContentResultHandler);
+    C2DXShareSDK::shareWithConfigurationFile("mob", cn::sharesdk::C2DXPlatTypeQQ, NULL, shareContentResultHandler);
 }
 
 void HelloWorld::cuntomShareWithConFileBtnClickHandler(cocos2d::Ref *pSender)
@@ -571,5 +571,5 @@ void HelloWorld::cuntomShareWithConFileBtnClickHandler(cocos2d::Ref *pSender)
     __Dictionary *customFields = __Dictionary::create();
     customFields -> setObject(__String::create("http://www.mob.com/mob/images/sharesdk/analysis-logo.png"), "imgUrl");
     
-    C2DXShareSDK::shareWithConfigurationFile("sharesdk", cn::sharesdk::C2DXPlatTypeSinaWeibo, customFields, shareContentResultHandler);
+    C2DXShareSDK::shareWithConfigurationFile("sharesdk", cn::sharesdk::C2DXPlatTypeQQ, customFields, shareContentResultHandler);
 }
