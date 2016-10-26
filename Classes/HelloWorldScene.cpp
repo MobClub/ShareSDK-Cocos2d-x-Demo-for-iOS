@@ -26,22 +26,30 @@ bool HelloWorld::init()
     Size winSize = Director::getInstance()->getWinSize();
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
     
+    //使用分享编辑页面＋配置文件分享
+    MenuItemLabel *showShareViewWithConFile = MenuItemLabel::create(LabelTTF::create("Show share view with configuration file", "Arial", 10),
+                                                                    CC_CALLBACK_1(HelloWorld::showShareViewWithConFileBtnClickHandler, this));
+    showShareViewWithConFile->setPosition(winSize.width/2 , 300);
+    auto showShareViewWithConFileMenu = Menu::create(showShareViewWithConFile,NULL);
+    showShareViewWithConFileMenu->setPosition(Vec2::ZERO);
+    this->addChild(showShareViewWithConFileMenu);
+    
+    //使用配置文件＋分享菜单栏分享(可选-自定义字段)
+    MenuItemLabel *showActionMenuWithConFile = MenuItemLabel::create(LabelTTF::create("Show action menu with configuration file", "Arial", 10),
+                                                                     CC_CALLBACK_1(HelloWorld::showShareMenuWithConFileBtnClickHandler, this));
+    showActionMenuWithConFile->setPosition(winSize.width/2 , 280);
+    auto showActionMenuWithConFileMenu = Menu::create(showActionMenuWithConFile,NULL);
+    showActionMenuWithConFileMenu->setPosition(Vec2::ZERO);
+    this->addChild(showActionMenuWithConFileMenu);
+    
     //根据配置文件分享
     MenuItemLabel *shareWithConFile = MenuItemLabel::create(LabelTTF::create("Share with Configuration file", "Arial", 10),
                                                             CC_CALLBACK_1(HelloWorld::shareWithConFileBtnClickHandler, this));
-    shareWithConFile->setPosition(winSize.width/2 , 280);
+    shareWithConFile->setPosition(winSize.width/2 , 260);
     auto shareWithConFileMenu = Menu::create(shareWithConFile,NULL);
     shareWithConFileMenu->setPosition(Vec2::ZERO);
     this->addChild(shareWithConFileMenu);
-    
-    //根据配置文件分享(可选-自定义字段)
-    MenuItemLabel *customShareWithConFile = MenuItemLabel::create(LabelTTF::create("Custom share with configuration file", "Arial", 10),
-                                                                  CC_CALLBACK_1(HelloWorld::cuntomShareWithConFileBtnClickHandler, this));
-    customShareWithConFile->setPosition(winSize.width/2 , 260);
-    auto customShareWithConFileMenu = Menu::create(customShareWithConFile,NULL);
-    customShareWithConFileMenu->setPosition(Vec2::ZERO);
-    this->addChild(customShareWithConFileMenu);
-    
+
     //授权
     MenuItemLabel *authItem = MenuItemLabel::create(LabelTTF::create("Authorize", "Arial", 10),
                                                     CC_CALLBACK_1(HelloWorld::authBtnClickHandler, this));
@@ -566,10 +574,18 @@ void HelloWorld::shareWithConFileBtnClickHandler(cocos2d::Ref *pSender)
     C2DXShareSDK::shareWithConfigurationFile("mob", cn::sharesdk::C2DXPlatTypeQQ, NULL, shareContentResultHandler);
 }
 
-void HelloWorld::cuntomShareWithConFileBtnClickHandler(cocos2d::Ref *pSender)
+void HelloWorld::showShareMenuWithConFileBtnClickHandler(cocos2d::Ref *pSender)
 {
     __Dictionary *customFields = __Dictionary::create();
     customFields -> setObject(__String::create("http://www.mob.com/mob/images/sharesdk/analysis-logo.png"), "imgUrl");
     
-    C2DXShareSDK::shareWithConfigurationFile("sharesdk", cn::sharesdk::C2DXPlatTypeQQ, customFields, shareContentResultHandler);
+    C2DXShareSDK::showShareMenuWithConfigurationFile(NULL,100,100, "mob", customFields, shareContentResultHandler);
+}
+
+void HelloWorld::showShareViewWithConFileBtnClickHandler(cocos2d::Ref *pSender)
+{
+    __Dictionary *customFields = __Dictionary::create();
+    customFields -> setObject(__String::create("http://www.mob.com/mob/images/sharesdk/analysis-logo.png"), "imgUrl");
+    
+    C2DXShareSDK::showShareViewWithConfigurationFile(cn::sharesdk::C2DXPlatTypeSinaWeibo, "mob", customFields, shareContentResultHandler);
 }
