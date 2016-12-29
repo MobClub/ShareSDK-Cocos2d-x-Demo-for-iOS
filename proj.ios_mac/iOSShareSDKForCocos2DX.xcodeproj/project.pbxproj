@@ -62,7 +62,6 @@
 		DE5977EE1C294E76007238D8 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE5977ED1C294E76007238D8 /* AddressBook.framework */; };
 		DE7044E91C604C9A001D5CA8 /* ShareSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE7044B61C604C9A001D5CA8 /* ShareSDK.framework */; };
 		DE7044EA1C604C9A001D5CA8 /* ShareSDKExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE7044B91C604C9A001D5CA8 /* ShareSDKExtension.framework */; };
-		DE7044EB1C604C9A001D5CA8 /* ShareSDKInterfaceAdapter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE7044BA1C604C9A001D5CA8 /* ShareSDKInterfaceAdapter.framework */; };
 		DE7044EC1C604C9A001D5CA8 /* ShareSDKUI.bundle in Resources */ = {isa = PBXBuildFile; fileRef = DE7044BB1C604C9A001D5CA8 /* ShareSDKUI.bundle */; };
 		DE7044ED1C604C9A001D5CA8 /* ShareSDKUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE7044BC1C604C9A001D5CA8 /* ShareSDKUI.framework */; };
 		DE7044EE1C604C9A001D5CA8 /* libAPOpenSdk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DE7044C11C604C9A001D5CA8 /* libAPOpenSdk.a */; };
@@ -202,7 +201,6 @@
 		DE5977ED1C294E76007238D8 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.4.sdk/System/Library/Frameworks/AddressBook.framework; sourceTree = DEVELOPER_DIR; };
 		DE7044B61C604C9A001D5CA8 /* ShareSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ShareSDK.framework; sourceTree = "<group>"; };
 		DE7044B91C604C9A001D5CA8 /* ShareSDKExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ShareSDKExtension.framework; sourceTree = "<group>"; };
-		DE7044BA1C604C9A001D5CA8 /* ShareSDKInterfaceAdapter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ShareSDKInterfaceAdapter.framework; sourceTree = "<group>"; };
 		DE7044BB1C604C9A001D5CA8 /* ShareSDKUI.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ShareSDKUI.bundle; sourceTree = "<group>"; };
 		DE7044BC1C604C9A001D5CA8 /* ShareSDKUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ShareSDKUI.framework; sourceTree = "<group>"; };
 		DE7044BF1C604C9A001D5CA8 /* APOpenAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APOpenAPI.h; sourceTree = "<group>"; };
@@ -279,7 +277,6 @@
 				DEE12BEF1DB8A748009B2C83 /* GooglePlusConnector.framework in Frameworks */,
 				DEE12BF51DB8A748009B2C83 /* PrintConnector.framework in Frameworks */,
 				DE7044F61C604C9B001D5CA8 /* libWeiboSDK.a in Frameworks */,
-				DE7044EB1C604C9A001D5CA8 /* ShareSDKInterfaceAdapter.framework in Frameworks */,
 				DE5977EA1C294E65007238D8 /* MediaPlayer.framework in Frameworks */,
 				DEE12BFB1DB8A748009B2C83 /* WhatsAppConnector.framework in Frameworks */,
 				DE7044F21C604C9A001D5CA8 /* TencentOpenAPI.framework in Frameworks */,
@@ -526,7 +523,6 @@
 				DEE12BFE1DB8A75E009B2C83 /* ShareSDKConfigFile.bundle */,
 				DEE12BFF1DB8A75E009B2C83 /* ShareSDKConfigFile.framework */,
 				DE7044B91C604C9A001D5CA8 /* ShareSDKExtension.framework */,
-				DE7044BA1C604C9A001D5CA8 /* ShareSDKInterfaceAdapter.framework */,
 				DE7044BB1C604C9A001D5CA8 /* ShareSDKUI.bundle */,
 				DE7044BC1C604C9A001D5CA8 /* ShareSDKUI.framework */,
 			);
