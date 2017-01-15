@@ -78,6 +78,8 @@
 		DE7044FB1C604C9B001D5CA8 /* MOBFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE7044E61C604C9A001D5CA8 /* MOBFoundation.framework */; };
 		DE7044FC1C604C9B001D5CA8 /* ShareSDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = DE7044E71C604C9A001D5CA8 /* ShareSDK.bundle */; };
 		DE7044FD1C604C9B001D5CA8 /* ShareSDKConnector.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE7044E81C604C9A001D5CA8 /* ShareSDKConnector.framework */; };
+		DE76AB1F1E2B5F01000FDA6C /* DingTalkConnector.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE76AB1E1E2B5F01000FDA6C /* DingTalkConnector.framework */; };
+		DE76AB231E2B5F10000FDA6C /* DTShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE76AB221E2B5F10000FDA6C /* DTShareKit.framework */; };
 		DED9EDDE1C294D7100183B2F /* C2DXShareSDK.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DED9EDD51C294D7100183B2F /* C2DXShareSDK.cpp */; };
 		DED9EDDF1C294D7100183B2F /* C2DXiOSShareSDK.mm in Sources */ = {isa = PBXBuildFile; fileRef = DED9EDDA1C294D7100183B2F /* C2DXiOSShareSDK.mm */; };
 		DED9EDF11C294FB200183B2F /* GameController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DED9EDF01C294FB200183B2F /* GameController.framework */; };
@@ -235,6 +237,8 @@
 		DE7044E61C604C9A001D5CA8 /* MOBFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MOBFoundation.framework; sourceTree = "<group>"; };
 		DE7044E71C604C9A001D5CA8 /* ShareSDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ShareSDK.bundle; sourceTree = "<group>"; };
 		DE7044E81C604C9A001D5CA8 /* ShareSDKConnector.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ShareSDKConnector.framework; sourceTree = "<group>"; };
+		DE76AB1E1E2B5F01000FDA6C /* DingTalkConnector.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DingTalkConnector.framework; sourceTree = "<group>"; };
+		DE76AB221E2B5F10000FDA6C /* DTShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DTShareKit.framework; sourceTree = "<group>"; };
 		DED9EDD51C294D7100183B2F /* C2DXShareSDK.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = C2DXShareSDK.cpp; sourceTree = "<group>"; };
 		DED9EDD61C294D7100183B2F /* C2DXShareSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = C2DXShareSDK.h; sourceTree = "<group>"; };
 		DED9EDD71C294D7100183B2F /* C2DXShareSDKTypeDef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = C2DXShareSDKTypeDef.h; sourceTree = "<group>"; };
@@ -307,8 +311,10 @@
 				D6B0611B1803AB670077942B /* CoreMotion.framework in Frameworks */,
 				DEE12BEB1DB8A748009B2C83 /* AliPayConnector.framework in Frameworks */,
 				DEE12BF61DB8A748009B2C83 /* QQConnector.framework in Frameworks */,
+				DE76AB1F1E2B5F01000FDA6C /* DingTalkConnector.framework in Frameworks */,
 				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
 				DE7044FA1C604C9B001D5CA8 /* libYixinSDK.a in Frameworks */,
+				DE76AB231E2B5F10000FDA6C /* DTShareKit.framework in Frameworks */,
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
 				DEE12BF31DB8A748009B2C83 /* LineConnector.framework in Frameworks */,
 				DEE12BF01DB8A748009B2C83 /* InstagramConnector.framework in Frameworks */,
@@ -532,6 +538,7 @@
 		DE7044BD1C604C9A001D5CA8 /* PlatformSDK */ = {
 			isa = PBXGroup;
 			children = (
+				DE76AB211E2B5F10000FDA6C /* DingTalkSDK */,
 				DE7044BE1C604C9A001D5CA8 /* APSocialSDK */,
 				DE7044C31C604C9A001D5CA8 /* FacebookMessengerSDK */,
 				DE7044C51C604C9A001D5CA8 /* KaKaoSDK */,
@@ -639,6 +646,14 @@
 			path = Required;
 			sourceTree = "<group>";
 		};
+		DE76AB211E2B5F10000FDA6C /* DingTalkSDK */ = {
+			isa = PBXGroup;
+			children = (
+				DE76AB221E2B5F10000FDA6C /* DTShareKit.framework */,
+			);
+			path = DingTalkSDK;
+			sourceTree = "<group>";
+		};
 		DED9EDCA1C294D7100183B2F /* C2DXShareSDK */ = {
 			isa = PBXGroup;
 			children = (
@@ -662,6 +677,7 @@
 		DEE12BD81DB8A747009B2C83 /* PlatformConnector */ = {
 			isa = PBXGroup;
 			children = (
+				DE76AB1E1E2B5F01000FDA6C /* DingTalkConnector.framework */,
 				DEE12BD91DB8A747009B2C83 /* AliPayConnector.framework */,
 				DEE12BDA1DB8A747009B2C83 /* CopyConnector.framework */,
 				DEE12BDB1DB8A747009B2C83 /* EvernoteConnector.framework */,
@@ -837,6 +853,7 @@
 					"$(PROJECT_DIR)/ShareSDK/Support/PlatformSDK/RenRenSDK",
 					"$(PROJECT_DIR)/ShareSDK/Support/Required",
 					"$(PROJECT_DIR)/ShareSDK/Support/PlatformConnector",
+					"$(PROJECT_DIR)/ShareSDK/Support/PlatformSDK/DingTalkSDK",
 				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
@@ -891,6 +908,7 @@
 					"$(PROJECT_DIR)/ShareSDK/Support/PlatformSDK/RenRenSDK",
 					"$(PROJECT_DIR)/ShareSDK/Support/Required",
 					"$(PROJECT_DIR)/ShareSDK/Support/PlatformConnector",
+					"$(PROJECT_DIR)/ShareSDK/Support/PlatformSDK/DingTalkSDK",
 				);
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;

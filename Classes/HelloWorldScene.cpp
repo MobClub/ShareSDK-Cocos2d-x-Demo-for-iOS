@@ -517,12 +517,12 @@ void HelloWorld::shareContentClickHandler(cocos2d::Ref *pSender)
     //分享内容
     __Dictionary *content = __Dictionary::create();
     content -> setObject(__String::create("分享文本"), "text");
-    content -> setObject(__String::create("HelloWorld.png"), "image");
+    content -> setObject(__String::create("http://www.mob.com/mob/img/navproducts_03.png"), "image");
     content -> setObject(__String::create("测试标题"), "title");
     content -> setObject(__String::create("http://www.mob.com"), "url");
-    content -> setObject(__String::createWithFormat("%d", cn::sharesdk::C2DXContentTypeImage), "type");
+    content -> setObject(__String::createWithFormat("%d", cn::sharesdk::C2DXContentTypeAuto), "type");
     
-    C2DXShareSDK::shareContent(cn::sharesdk::C2DXPlatTypeSinaWeibo, content, shareContentResultHandler);
+    C2DXShareSDK::shareContent(cn::sharesdk::C2DXPlatTypeFacebookMessenger, content, shareContentResultHandler);
 }
 
 void HelloWorld::oneKeyShareContentClickHandler(cocos2d::Ref *pSender)

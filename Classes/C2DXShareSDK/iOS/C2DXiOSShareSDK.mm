@@ -26,6 +26,8 @@
 #define IMPORT_WECHAT_LIB                   //导入微信库，如果不需要微信分享可以注释此行
 #define IMPORT_ALIPAY_LIB                   //导入支付宝分享库，如果不需要支付宝分享可以注释此行
 #define IMPORT_KAKAO_LIB                    //导入Kakao库，如果不需要Kakao分享可以注释此行
+#define IMPORT_MESSENGER_LIB                //导入Facebook Messenger库，如果不需要Facebook Messenger分享可以注释此行
+#define IMPORT_DINGTALK_LIB                 //导入钉钉（Ding Talk）库，如果不需要钉钉（Ding Talk）分享可以注释此行
 
 #ifdef IMPORT_SINA_WEIBO_LIB
 #import "WeiboSDK.h"
@@ -50,6 +52,14 @@
 
 #ifdef IMPORT_KAKAO_LIB
 #import <KakaoOpenSDK/KakaoOpenSDK.h>
+#endif
+
+#ifdef IMPORT_MESSENGER_LIB
+#import <FBSDKMessengerShareKit/FBSDKMessengerSharer.h>
+#endif
+
+#ifdef IMPORT_DINGTALK_LIB
+#import <DTShareKit/DTOpenAPI.h>
 #endif
 
 static UIView *_refView = nil;
@@ -392,6 +402,18 @@ void C2DXiOSShareSDK::registerAppAndSetPlatformConfig(const char *appKey, C2DXDi
 #ifdef IMPORT_KAKAO_LIB
                          case SSDKPlatformTypeKakao:
                              [ShareSDKConnector connectKaKao:[KOSession class]];
+                             break;
+#endif
+                             
+#ifdef IMPORT_MESSENGER_LIB
+                         case SSDKPlatformTypeFacebookMessenger:
+                             [ShareSDKConnector connectFacebookMessenger:[FBSDKMessengerSharer class]];
+                             break;
+#endif
+                             
+#ifdef IMPORT_DINGTALK_LIB
+                         case SSDKPlatformTypeDingTalk:
+                             [ShareSDKConnector connectDingTalk:[DTOpenAPI class]];
                              break;
 #endif
              
@@ -880,6 +902,14 @@ void C2DXiOSShareSDK::showShareEditViewWithConfigurationFile(int reqID,C2DXPlatT
 #ifdef IMPORT_KAKAO_LIB
     [ShareSDKConnector connectKaKao:[KOSession class]];
 #endif
+    
+#ifdef IMPORT_MESSENGER_LIB
+    [ShareSDKConnector connectFacebookMessenger:[FBSDKMessengerSharer class]];
+#endif
+    
+#ifdef IMPORT_DINGTALK_LIB
+    [ShareSDKConnector connectDingTalk:[DTOpenAPI class]];
+#endif
 
     NSString *aContentName = convertC2DXStringToNSString(C2DXString::create(contentName));
     NSDictionary *aCustomFields = convertC2DXDictionaryToNSDictionary(customFields);
@@ -1105,6 +1135,14 @@ void C2DXiOSShareSDK::showShareMenuWithConfigurationFile(int reqID,C2DXArray *pl
     [ShareSDKConnector connectKaKao:[KOSession class]];
 #endif
     
+#ifdef IMPORT_MESSENGER_LIB
+    [ShareSDKConnector connectFacebookMessenger:[FBSDKMessengerSharer class]];
+#endif
+    
+#ifdef IMPORT_DINGTALK_LIB
+    [ShareSDKConnector connectDingTalk:[DTOpenAPI class]];
+#endif
+    
     NSMutableArray *shareList = nil;
     if (platTypes && platTypes -> count() > 0)
     {
@@ -1204,6 +1242,14 @@ void C2DXiOSShareSDK::shareWithConfigurationFile(int reqID, const char *contentN
     
 #ifdef IMPORT_KAKAO_LIB
     [ShareSDKConnector connectKaKao:[KOSession class]];
+#endif
+    
+#ifdef IMPORT_MESSENGER_LIB
+    [ShareSDKConnector connectFacebookMessenger:[FBSDKMessengerSharer class]];
+#endif
+    
+#ifdef IMPORT_DINGTALK_LIB
+    [ShareSDKConnector connectDingTalk:[DTOpenAPI class]];
 #endif
     
     SSDKPlatformType type = (SSDKPlatformType)platType;

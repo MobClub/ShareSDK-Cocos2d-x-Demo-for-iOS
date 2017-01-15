@@ -150,5 +150,18 @@ void AppDelegate::initShareSDKConfig()
     mail << cn::sharesdk::C2DXPlatTypeMail;
     totalDict->setObject(mailConf, mail.str());
     
+    //Facebook Messenger
+    __Dictionary *fbMessengerConf = __Dictionary::create();
+    stringstream messenger;
+    messenger << cn::sharesdk::C2DXPlatTypeFacebookMessenger;
+    totalDict -> setObject(fbMessengerConf, mail.str());
+    
+    //钉钉（Ding Talk）
+    __Dictionary *dingTalkConf = __Dictionary::create();
+    dingTalkConf->setObject(__String::create("dingoanxyrpiscaovl4qlw"), "app_id");
+    stringstream dingTalk;
+    dingTalk << cn::sharesdk::C2DXPlatTypeDingTalk;
+    totalDict -> setObject(dingTalkConf, dingTalk.str());
+    
     cn::sharesdk::C2DXShareSDK::registerAppAndSetPlatformConfig("8e3320a36606", totalDict);
 }
