@@ -163,5 +163,20 @@ void AppDelegate::initShareSDKConfig()
     dingTalk << cn::sharesdk::C2DXPlatTypeDingTalk;
     totalDict -> setObject(dingTalkConf, dingTalk.str());
     
+    //Mai Pai
+    __Dictionary *meiPaiConf = __Dictionary::create();
+    meiPaiConf->setObject(__String::create("1089867596"), "app_key");
+    stringstream meiPai;
+    meiPai << cn::sharesdk::C2DXPlatTypeMeiPai;
+    totalDict -> setObject(meiPaiConf, meiPai.str());
+    
+    //Youtube
+    __Dictionary *youTubeConf = __Dictionary::create();
+    youTubeConf->setObject(__String::create("906418427202-jinnbqal1niq4s8isbg2ofsqc5ddkcgr.apps.googleusercontent.com"), "client_id");
+    youTubeConf->setObject(__String::create("http://localhost"), "redirect_uri");
+    stringstream youTube;
+    youTube << cn::sharesdk::C2DXPlatTypeYouTube;
+    totalDict -> setObject(youTubeConf, youTube.str());
+    
     cn::sharesdk::C2DXShareSDK::registerAppAndSetPlatformConfig("8e3320a36606", totalDict);
 }
