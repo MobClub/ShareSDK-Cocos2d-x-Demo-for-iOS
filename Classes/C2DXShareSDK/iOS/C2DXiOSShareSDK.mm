@@ -711,9 +711,13 @@ void C2DXiOSShareSDK::getUserInfo(int reqID,C2DXPlatType platType, C2DXGetUserIn
 }
 
 #pragma mark 简单分享
-void C2DXiOSShareSDK::shareContent(int reqID,C2DXPlatType platType, C2DXDictionary *content, C2DXShareResultEvent callback)
+void C2DXiOSShareSDK::shareContent(int reqID,C2DXPlatType platType, C2DXDictionary *content,bool useClientShare, C2DXShareResultEvent callback)
 {
     NSMutableDictionary *parameters = convertPublishContent(content);
+    if(useClientShare)
+    {
+        [parameters SSDKEnableUseClientShare];
+    }
     [ShareSDK share:(SSDKPlatformType)platType
          parameters:parameters
      onStateChanged:^(SSDKResponseState state, NSDictionary *userData, SSDKContentEntity *contentEntity, NSError *error) {
@@ -812,7 +816,7 @@ void C2DXiOSShareSDK::oneKeyShareContent(int reqID,C2DXArray *platTypes, C2DXDic
 }
 
 #pragma mark 弹出分享菜单进行分享
-void C2DXiOSShareSDK::showShareMenu(int reqID,C2DXArray *platTypes, C2DXDictionary *content, C2DXPoint pt, C2DXShareResultEvent callback)
+void C2DXiOSShareSDK::showShareMenu(int reqID,C2DXArray *platTypes, C2DXDictionary *content, C2DXPoint pt, bool useClientShare , C2DXShareResultEvent callback)
 {
     NSMutableArray *shareList = nil;
     if (platTypes && platTypes -> count() > 0)
@@ -837,7 +841,10 @@ void C2DXiOSShareSDK::showShareMenu(int reqID,C2DXArray *platTypes, C2DXDictiona
     NSMutableDictionary *shareParams;
     //构造分享参数
     shareParams = convertPublishContent(content);
-    
+    if(useClientShare)
+    {
+        [shareParams SSDKEnableUseClientShare];
+    }
     [ShareSDK showShareActionSheet:_refView
                              items:shareList
                        shareParams:shareParams
@@ -975,11 +982,15 @@ void C2DXiOSShareSDK::showShareEditViewWithConfigurationFile(int reqID,C2DXPlatT
     
 }
 
-void C2DXiOSShareSDK::showShareEditView(int reqID,C2DXPlatType platType, C2DXDictionary *content, C2DXShareResultEvent callback)
+void C2DXiOSShareSDK::showShareEditView(int reqID,C2DXPlatType platType, C2DXDictionary *content, bool useClientShare, C2DXShareResultEvent callback)
 {
     NSMutableDictionary *shareParams;
     //构造分享参数
     shareParams = convertPublishContent(content);
+    if(useClientShare)
+    {
+        [shareParams SSDKEnableUseClientShare];
+    }
     [ShareSDK showShareEditor:(SSDKPlatformType)platType
            otherPlatformTypes:nil
                   shareParams:shareParams

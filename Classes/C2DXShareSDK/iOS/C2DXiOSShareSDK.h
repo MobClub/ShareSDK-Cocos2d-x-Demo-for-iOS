@@ -89,7 +89,7 @@ namespace cn
              *	@param 	content 	分享内容
              *	@param 	callback 	回调方法
              */
-            static void shareContent(int reqID,C2DXPlatType platType, C2DXDictionary *content, C2DXShareResultEvent callback);
+            static void shareContent(int reqID,C2DXPlatType platType, C2DXDictionary *content, bool useClientShare, C2DXShareResultEvent callback);
 
             /**
              *	@brief	一键分享内容
@@ -110,7 +110,7 @@ namespace cn
              *	@param 	pt          弹出分享菜单参位置，仅用于设置iPad分享菜单弹出
              *	@param 	callback 	回调方法
              */
-            static void showShareMenu(int reqID,C2DXArray *platTypes, C2DXDictionary *content, C2DXPoint pt, C2DXShareResultEvent callback);
+            static void showShareMenu(int reqID,C2DXArray *platTypes, C2DXDictionary *content, C2DXPoint pt, bool useClientShare, C2DXShareResultEvent callback);
             
             /**
              *	@brief	显示分享编辑框
@@ -120,7 +120,7 @@ namespace cn
              *	@param 	content 	分享内容
              *	@param 	callback 	回调方法
              */
-            static void showShareEditView(int reqID,C2DXPlatType platType, C2DXDictionary *content, C2DXShareResultEvent callback);
+            static void showShareEditView(int reqID,C2DXPlatType platType, C2DXDictionary *content, bool useClientShare, C2DXShareResultEvent callback);
             
             /**
              *	@brief	获取好友列表

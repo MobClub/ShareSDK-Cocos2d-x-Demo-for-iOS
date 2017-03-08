@@ -476,8 +476,8 @@ void HelloWorld::showShareMenuClickHandler(cocos2d::Ref* pSender)
     content -> setObject(__String::create("测试标题"), "title");
     content -> setObject(__String::create("http://www.mob.com"), "url");
     content -> setObject(__String::createWithFormat("%d", cn::sharesdk::C2DXContentTypeAuto), "type");
-    
-    C2DXShareSDK::showShareMenu(NULL,content,100,100,shareContentResultHandler);
+    //优先使用客户端分享 false有限使用web分享
+    C2DXShareSDK::showShareMenu(NULL,content,100,100, true, shareContentResultHandler);
 }
 
 void HelloWorld::authBtnClickHandler(cocos2d::Ref* pSender)
@@ -522,7 +522,8 @@ void HelloWorld::shareContentClickHandler(cocos2d::Ref *pSender)
     content -> setObject(__String::create("http://www.mob.com"), "url");
     content -> setObject(__String::createWithFormat("%d", cn::sharesdk::C2DXContentTypeAuto), "type");
     
-    C2DXShareSDK::shareContent(cn::sharesdk::C2DXPlatTypeFacebookMessenger, content, shareContentResultHandler);
+    //优先使用客户端分享 false有限使用web分享
+    C2DXShareSDK::shareContent(cn::sharesdk::C2DXPlatTypeFacebook, content, true, shareContentResultHandler);
 }
 
 void HelloWorld::oneKeyShareContentClickHandler(cocos2d::Ref *pSender)
@@ -556,7 +557,8 @@ void HelloWorld::showShareViewClickHandler(cocos2d::Ref *pSender)
     content -> setObject(__String::create("http://www.mob.com"), "url");
     content -> setObject(__String::createWithFormat("%d", cn::sharesdk::C2DXContentTypeImage), "type");
     
-    C2DXShareSDK::showShareView(cn::sharesdk::C2DXPlatTypeSinaWeibo, content, shareContentResultHandler);
+    //优先使用客户端分享 false有限使用web分享
+    C2DXShareSDK::showShareView(cn::sharesdk::C2DXPlatTypeSinaWeibo, content, true, shareContentResultHandler);
 }
 
 void HelloWorld::getFriendListBtnClickHandler(cocos2d::Ref *pSender)

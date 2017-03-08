@@ -131,6 +131,7 @@ void AppDelegate::initShareSDKConfig()
     __Dictionary *fbConf = __Dictionary::create();
     fbConf->setObject(__String::create("107704292745179"), "api_key");
     fbConf->setObject(__String::create("38053202e1a5fe26c80c753071f0b573"), "app_secret");
+    fbConf->setObject(__String::create("ShareSDK"), "display_name");
     stringstream facebook;
     facebook << cn::sharesdk::C2DXPlatTypeFacebook;
     totalDict->setObject(fbConf, facebook.str());
