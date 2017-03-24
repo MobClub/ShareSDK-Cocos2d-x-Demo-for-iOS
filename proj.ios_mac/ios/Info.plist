@@ -255,5 +255,12 @@
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
+	<key>LineSDKConfig</key>
+	<dict>
+		<key>ChannelID</key>
+		<string>1502330683</string>
+	</dict>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>从手机相册中选择</string>
 </dict>
 </plist>

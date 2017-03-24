@@ -151,11 +151,17 @@ void AppDelegate::initShareSDKConfig()
     mail << cn::sharesdk::C2DXPlatTypeMail;
     totalDict->setObject(mailConf, mail.str());
     
+    
     //Facebook Messenger
+    /*
+     iOS 需在info.plist 中增加
+     <key>FacebookAppID</key>
+     <string>107704292745179</string>
+     */
     __Dictionary *fbMessengerConf = __Dictionary::create();
     stringstream messenger;
     messenger << cn::sharesdk::C2DXPlatTypeFacebookMessenger;
-    totalDict -> setObject(fbMessengerConf, mail.str());
+    totalDict -> setObject(fbMessengerConf, messenger.str());
     
     //钉钉（Ding Talk）
     __Dictionary *dingTalkConf = __Dictionary::create();
@@ -165,12 +171,32 @@ void AppDelegate::initShareSDKConfig()
     totalDict -> setObject(dingTalkConf, dingTalk.str());
     
     //Mai Pai
+    /*
+     iOS 需要在 info.plist 配置 授权相册权限
+     <key>NSPhotoLibraryUsageDescription</key>
+     <string>从手机相册中选择</string>
+     */
     __Dictionary *meiPaiConf = __Dictionary::create();
     meiPaiConf->setObject(__String::create("1089867596"), "app_key");
     stringstream meiPai;
     meiPai << cn::sharesdk::C2DXPlatTypeMeiPai;
     totalDict -> setObject(meiPaiConf, meiPai.str());
     
+    //line
+    /*
+    ios 需要在 info.plist 配置
+    <key>LineSDKConfig</key>
+    <dict>
+    <key>ChannelID</key>
+    <string>1502330683</string>
+    </dict>
+     */
+    __Dictionary *lineConf = __Dictionary::create();
+    stringstream line;
+    line << cn::sharesdk::C2DXPlatTypeLine;
+    totalDict->setObject(lineConf, line.str());
+    
+    /*
     //Youtube
     __Dictionary *youTubeConf = __Dictionary::create();
     youTubeConf->setObject(__String::create("906418427202-jinnbqal1niq4s8isbg2ofsqc5ddkcgr.apps.googleusercontent.com"), "client_id");
@@ -178,6 +204,7 @@ void AppDelegate::initShareSDKConfig()
     stringstream youTube;
     youTube << cn::sharesdk::C2DXPlatTypeYouTube;
     totalDict -> setObject(youTubeConf, youTube.str());
+     */
     
     cn::sharesdk::C2DXShareSDK::registerAppAndSetPlatformConfig("8e3320a36606", totalDict);
 }

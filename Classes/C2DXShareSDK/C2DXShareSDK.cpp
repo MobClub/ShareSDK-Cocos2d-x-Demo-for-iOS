@@ -182,6 +182,27 @@ C2DXDictionary* C2DXShareSDK::getAuthInfo(C2DXPlatType platType)
 #endif
 }
 
+int C2DXShareSDK::shareContent(C2DXPlatType platType, C2DXDictionary *content, C2DXShareResultEvent callback)
+{
+    reqID ++;
+#if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
+    
+    //Andorid
+    C2DXArray *platTypes = C2DXArray::create();
+    platTypes->addObject(C2DXInteger::create(platType));
+    shareContentJNI(reqID, platTypes, content, callback);
+    
+#elif CC_TARGET_PLATFORM == CC_PLATFORM_IOS
+    
+    //iOS
+    C2DXArray *platTypes = C2DXArray::create();
+    platTypes->addObject(C2DXInteger::create(platType));
+    C2DXiOSShareSDK::shareContent(reqID,platType, content, true, callback);
+    
+#endif
+    return reqID;
+}
+
 int C2DXShareSDK::shareContent(C2DXPlatType platType, C2DXDictionary *content,bool useClientShare,C2DXShareResultEvent callback)
 {
 	reqID ++;
@@ -221,6 +242,23 @@ int C2DXShareSDK::oneKeyShareContent(C2DXArray *platTypes, C2DXDictionary *conte
 
 }
 
+int C2DXShareSDK::showShareMenu(C2DXArray *platTypes, C2DXDictionary *content, int x, int y, C2DXShareResultEvent callback)
+{
+    reqID ++;
+#if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
+    
+    //Android
+    onekeyShareJNI(reqID, 0, content, callback);
+    
+#elif CC_TARGET_PLATFORM == CC_PLATFORM_IOS
+    
+    //iOS
+    C2DXiOSShareSDK::showShareMenu(reqID,platTypes, content, C2DXPointMake(x,y), true , callback);
+    
+#endif
+    return reqID;
+}
+
 int C2DXShareSDK::showShareMenu(C2DXArray *platTypes, C2DXDictionary *content, int x, int y, bool useClientShare, C2DXShareResultEvent callback)
 {
 	reqID ++;
@@ -237,6 +275,25 @@ int C2DXShareSDK::showShareMenu(C2DXArray *platTypes, C2DXDictionary *content, i
 #endif
 	return reqID;
 }
+
+
+int C2DXShareSDK::showShareView(C2DXPlatType platType, C2DXDictionary *content, C2DXShareResultEvent callback)
+{
+    reqID ++;
+#if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
+    
+    //Android
+    onekeyShareJNI(reqID, (int) platType, content, callback);
+    
+#elif CC_TARGET_PLATFORM == CC_PLATFORM_IOS
+    
+    //iOS
+    C2DXiOSShareSDK::showShareEditView(reqID,platType, content, true, callback);
+    
+#endif
+    return reqID;
+}
+
 
 int C2DXShareSDK::showShareView(C2DXPlatType platType, C2DXDictionary *content, bool useClientShare, C2DXShareResultEvent callback)
 {

@@ -134,18 +134,29 @@ namespace cn
              *	@param 	callback 	回调方法
              */
             static C2DXDictionary* getAuthInfo(C2DXPlatType platType);
+            
+            
+            /**
+             *	@brief	分享内容
+             *
+             *	@param 	platType 	平台类型
+             *	@param 	content 	分享内容
+             *	@param 	callback 	回调方法
+             *	@return 	reqID 	流水号
+             */
+            static int shareContent(C2DXPlatType platType, C2DXDictionary *content, C2DXShareResultEvent callback);
 
             /**
              *	@brief	分享内容
              *
              *	@param 	platType 	平台类型
              *	@param 	content 	分享内容
-             *	@param  isSSO       是否SSO授权
              *  @param  useClientShare 是否优先使用客户端分享
              *	@param 	callback 	回调方法
              *	@return 	reqID 	流水号
              */
             static int shareContent(C2DXPlatType platType, C2DXDictionary *content,bool useClientShare, C2DXShareResultEvent callback);
+            
             
             /**
              *	@brief	分享内容
@@ -162,11 +173,31 @@ namespace cn
              *
              *	@param 	platTypes 	平台类型列表，值可以为NULL，此时显示所有初始化的平台
              *	@param 	content 	分享内容
+             *	@param 	callback 	回调方法
+             *	@return 	reqID 	流水号
+             */
+            static int showShareMenu(C2DXArray *platTypes, C2DXDictionary *content, int x, int y, C2DXShareResultEvent callback);
+            
+            /**
+             *	@brief	显示分享菜单
+             *
+             *	@param 	platTypes 	平台类型列表，值可以为NULL，此时显示所有初始化的平台
+             *	@param 	content 	分享内容
              *  @param  useClientShare 是否优先使用客户端进行分享
              *	@param 	callback 	回调方法
              *	@return 	reqID 	流水号
              */
             static int showShareMenu(C2DXArray *platTypes, C2DXDictionary *content, int x, int y, bool useClientShare, C2DXShareResultEvent callback);
+            
+            /**
+             *	@brief	显示分享视图
+             *
+             *	@param 	platType 	平台类型
+             *	@param 	content 	分享内容
+             *	@param 	callback 	回调方法
+             *	@return 	reqID 	流水号
+             */
+            static int showShareView(C2DXPlatType platType, C2DXDictionary *content, C2DXShareResultEvent callback);
             
             /**
              *	@brief	显示分享视图

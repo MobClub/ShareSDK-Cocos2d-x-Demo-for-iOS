@@ -87,6 +87,7 @@ namespace cn
              *
              *	@param 	platType 	平台类型
              *	@param 	content 	分享内容
+             *  @param  useClientShare 是否优先使用客户端分享
              *	@param 	callback 	回调方法
              */
             static void shareContent(int reqID,C2DXPlatType platType, C2DXDictionary *content, bool useClientShare, C2DXShareResultEvent callback);
