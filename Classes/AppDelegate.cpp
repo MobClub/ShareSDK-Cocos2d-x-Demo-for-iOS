@@ -190,6 +190,8 @@ void AppDelegate::initShareSDKConfig()
     <key>ChannelID</key>
     <string>1502330683</string>
     </dict>
+     设置 URL Scheme : line3rdp.$(PRODUCT_BUNDLE_IDENTIFIER)
+     LSApplicationQueriesSchemes : lineauth line line3rdp.$(PRODUCT_BUNDLE_IDENTIFIER)
      */
     __Dictionary *lineConf = __Dictionary::create();
     stringstream line;

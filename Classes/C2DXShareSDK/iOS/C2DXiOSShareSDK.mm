@@ -29,6 +29,7 @@
 #define IMPORT_MESSENGER_LIB                //导入Facebook Messenger库，如果不需要Facebook Messenger分享可以注释此行
 #define IMPORT_DINGTALK_LIB                 //导入钉钉（Ding Talk）库，如果不需要钉钉（Ding Talk）分享可以注释此行
 #define IMPORT_MEIPAI_LIB                   //导入美拍库，如果不需要美拍分享可以注释此行
+#define IMPORT_LINE_LIB                     //导入line，如果不需要line授权SDK可以注释此行
 
 #ifdef IMPORT_SINA_WEIBO_LIB
 #import "WeiboSDK.h"
@@ -66,6 +67,10 @@
 
 #ifdef IMPORT_MEIPAI_LIB
 #import <MPShareSDK/MPShareSDK.h>
+#endif
+
+#ifdef IMPORT_LINE_LIB
+#import <LineSDK/LineSDK.h>
 #endif
 
 static UIView *_refView = nil;
@@ -427,6 +432,12 @@ void C2DXiOSShareSDK::registerAppAndSetPlatformConfig(const char *appKey, C2DXDi
 #ifdef IMPORT_MEIPAI_LIB
                          case SSDKPlatformTypeMeiPai:
                              [ShareSDKConnector connectMeiPai:[MPShareSDK class]];
+                             break;
+#endif
+                             
+#ifdef IMPORT_LINE_LIB
+                         case SSDKPlatformTypeLine:
+                             [ShareSDKConnector connectLine:[LineSDKLogin class]];
                              break;
 #endif
              
@@ -934,6 +945,10 @@ void C2DXiOSShareSDK::showShareEditViewWithConfigurationFile(int reqID,C2DXPlatT
 #ifdef IMPORT_MEIPAI_LIB
     [ShareSDKConnector connectMeiPai:[MPShareSDK class]];
 #endif
+    
+#ifdef IMPORT_LINE_LIB
+    [ShareSDKConnector connectLine:[LineSDKLogin class]];
+#endif
 
     NSString *aContentName = convertC2DXStringToNSString(C2DXString::create(contentName));
     NSDictionary *aCustomFields = convertC2DXDictionaryToNSDictionary(customFields);
@@ -1175,6 +1190,10 @@ void C2DXiOSShareSDK::showShareMenuWithConfigurationFile(int reqID,C2DXArray *pl
     [ShareSDKConnector connectMeiPai:[MPShareSDK class]];
 #endif
     
+#ifdef IMPORT_LINE_LIB
+    [ShareSDKConnector connectLine:[LineSDKLogin class]];
+#endif
+    
     NSMutableArray *shareList = nil;
     if (platTypes && platTypes -> count() > 0)
     {
@@ -1286,6 +1305,10 @@ void C2DXiOSShareSDK::shareWithConfigurationFile(int reqID, const char *contentN
     
 #ifdef IMPORT_MEIPAI_LIB
     [ShareSDKConnector connectMeiPai:[MPShareSDK class]];
+#endif
+    
+#ifdef IMPORT_LINE_LIB
+    [ShareSDKConnector connectLine:[LineSDKLogin class]];
 #endif
     
     SSDKPlatformType type = (SSDKPlatformType)platType;
