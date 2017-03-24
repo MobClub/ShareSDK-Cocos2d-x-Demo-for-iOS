@@ -78,7 +78,7 @@ namespace cn
 //             *	@brief	获取用户授权信息
 //             *
 //             *	@param 	platType 	平台类型
-//             *	@param 	callback 	回调方法Classes
+//             *	@param 	callback 	回调方法
 //             */
 //            static void getAuthInfo(C2DXPlatType platType);
             
