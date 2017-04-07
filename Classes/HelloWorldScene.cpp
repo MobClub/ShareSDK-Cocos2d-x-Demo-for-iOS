@@ -607,7 +607,7 @@ void HelloWorld::addFriendBtnClickHandler(cocos2d::Ref *pSender)
 
 void HelloWorld::shareWithConFileBtnClickHandler(cocos2d::Ref *pSender)
 {
-    C2DXShareSDK::shareWithConfigurationFile("mob", cn::sharesdk::C2DXPlatTypeQQ, NULL, shareContentResultHandler);
+    C2DXShareSDK::shareWithConfigurationFile("ShareSDK", cn::sharesdk::C2DXPlatTypeQQ, NULL, shareContentResultHandler);
 }
 
 void HelloWorld::showShareMenuWithConFileBtnClickHandler(cocos2d::Ref *pSender)
@@ -615,7 +615,7 @@ void HelloWorld::showShareMenuWithConFileBtnClickHandler(cocos2d::Ref *pSender)
     __Dictionary *customFields = __Dictionary::create();
     customFields -> setObject(__String::create("http://www.mob.com/mob/images/sharesdk/analysis-logo.png"), "imgUrl");
     
-    C2DXShareSDK::showShareMenuWithConfigurationFile(NULL,100,100, "mob", customFields, shareContentResultHandler);
+    C2DXShareSDK::showShareMenuWithConfigurationFile(NULL,100,100, "ShareSDK", customFields, shareContentResultHandler);
 }
 
 void HelloWorld::showShareViewWithConFileBtnClickHandler(cocos2d::Ref *pSender)
@@ -623,5 +623,5 @@ void HelloWorld::showShareViewWithConFileBtnClickHandler(cocos2d::Ref *pSender)
     __Dictionary *customFields = __Dictionary::create();
     customFields -> setObject(__String::create("http://www.mob.com/mob/images/sharesdk/analysis-logo.png"), "imgUrl");
     
-    C2DXShareSDK::showShareViewWithConfigurationFile(cn::sharesdk::C2DXPlatTypeSinaWeibo, "mob", customFields, shareContentResultHandler);
+    C2DXShareSDK::showShareViewWithConfigurationFile(cn::sharesdk::C2DXPlatTypeSinaWeibo, "ShareSDK", customFields, shareContentResultHandler);
 }
