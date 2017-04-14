@@ -476,18 +476,12 @@ void HelloWorld::showShareMenuClickHandler(cocos2d::Ref* pSender)
     content -> setObject(__String::create("测试标题"), "title");
     content -> setObject(__String::create("http://www.mob.com"), "url");
     content -> setObject(__String::createWithFormat("%d", cn::sharesdk::C2DXContentTypeAuto), "type");
+    //iOS 启用客户端分享接口
+    content -> setObject(__String::createWithFormat("%d", true), "client_share");
+    //iOS 启用微博高级分享接口 3.6.3以后版本支持
+    content -> setObject(__String::createWithFormat("%d", true), "advanced_share");
     
-#if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
-    
-    //Andorid
     C2DXShareSDK::showShareMenu(NULL,content,100,100, shareContentResultHandler);
-    
-#elif CC_TARGET_PLATFORM == CC_PLATFORM_IOS
-    
-    //iOS
-    //优先使用客户端分享 false有限使用web分享
-    C2DXShareSDK::showShareMenu(NULL,content,100,100, true, shareContentResultHandler);
-#endif
     
 }
 
@@ -532,18 +526,12 @@ void HelloWorld::shareContentClickHandler(cocos2d::Ref *pSender)
     content -> setObject(__String::create("测试标题"), "title");
     content -> setObject(__String::create("http://www.mob.com"), "url");
     content -> setObject(__String::createWithFormat("%d", cn::sharesdk::C2DXContentTypeAuto), "type");
+    //iOS 启用客户端分享接口
+    content -> setObject(__String::createWithFormat("%d", true), "client_share");
+    //iOS 启用微博高级分享接口 3.6.3以后版本支持
+    content -> setObject(__String::createWithFormat("%d", true), "advanced_share");
     
-#if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
-    
-    //Andorid
-     C2DXShareSDK::shareContent(cn::sharesdk::C2DXPlatTypeFacebook, content, shareContentResultHandler);
-    
-#elif CC_TARGET_PLATFORM == CC_PLATFORM_IOS
-    
-    //iOS
-    //优先使用客户端分享 false有限使用web分享
-    C2DXShareSDK::shareContent(cn::sharesdk::C2DXPlatTypeFacebook, content, true, shareContentResultHandler);
-#endif
+    C2DXShareSDK::shareContent(cn::sharesdk::C2DXPlatTypeFacebook, content, shareContentResultHandler);
     
     
 }
@@ -578,19 +566,13 @@ void HelloWorld::showShareViewClickHandler(cocos2d::Ref *pSender)
     content -> setObject(__String::create("测试标题"), "title");
     content -> setObject(__String::create("http://www.mob.com"), "url");
     content -> setObject(__String::createWithFormat("%d", cn::sharesdk::C2DXContentTypeImage), "type");
+    //iOS 启用客户端分享接口
+    content -> setObject(__String::createWithFormat("%d", true), "client_share");
+    //iOS 启用微博高级分享接口 3.6.3以后版本支持
+    content -> setObject(__String::createWithFormat("%d", true), "advanced_share");
     
-    
-#if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
-    
-    //Andorid
     C2DXShareSDK::showShareView(cn::sharesdk::C2DXPlatTypeSinaWeibo, content, shareContentResultHandler);
     
-#elif CC_TARGET_PLATFORM == CC_PLATFORM_IOS
-    
-    //iOS
-    //优先使用客户端分享 false有限使用web分享
-    C2DXShareSDK::showShareView(cn::sharesdk::C2DXPlatTypeSinaWeibo, content, true, shareContentResultHandler);
-#endif
     
     
 }
