@@ -592,6 +592,8 @@ void HelloWorld::shareWithConFileBtnClickHandler(cocos2d::Ref *pSender)
     C2DXShareSDK::shareWithConfigurationFile("ShareSDK", cn::sharesdk::C2DXPlatTypeQQ, NULL, shareContentResultHandler);
 }
 
+#if CC_TARGET_PLATFORM == CC_PLATFORM_IOS
+
 void HelloWorld::showShareMenuWithConFileBtnClickHandler(cocos2d::Ref *pSender)
 {
     __Dictionary *customFields = __Dictionary::create();
@@ -607,3 +609,5 @@ void HelloWorld::showShareViewWithConFileBtnClickHandler(cocos2d::Ref *pSender)
     
     C2DXShareSDK::showShareViewWithConfigurationFile(cn::sharesdk::C2DXPlatTypeSinaWeibo, "ShareSDK", customFields, shareContentResultHandler);
 }
+
+#endif
