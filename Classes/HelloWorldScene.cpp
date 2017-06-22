@@ -481,6 +481,7 @@ void HelloWorld::showShareMenuClickHandler(cocos2d::Ref* pSender)
     //iOS 启用微博高级分享接口 3.6.3以后版本支持
     content -> setObject(__String::createWithFormat("%d", true), "advanced_share");
     
+    
     C2DXShareSDK::showShareMenu(NULL,content,100,100, shareContentResultHandler);
     
 }

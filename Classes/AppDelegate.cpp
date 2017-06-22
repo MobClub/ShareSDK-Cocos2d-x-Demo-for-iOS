@@ -208,5 +208,11 @@ void AppDelegate::initShareSDKConfig()
     totalDict -> setObject(youTubeConf, youTube.str());
      */
     
+    
+    //Share iOS SDK4.0.0及以上版本 appkey 及 appSecret 在Info.plist 中设置
+    //<key>MOBAppKey</key>
+    // <string>iosv1101</string>
+    // <key>MOBAppSecret</key>
+    // <string></string>
     cn::sharesdk::C2DXShareSDK::registerAppAndSetPlatformConfig("8e3320a36606", totalDict);
 }
