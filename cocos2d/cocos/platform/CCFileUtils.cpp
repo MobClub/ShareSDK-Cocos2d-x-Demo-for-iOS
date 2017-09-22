@@ -1114,6 +1114,10 @@ long FileUtils::getFileSize(const std::string &filepath)
 #include <errno.h>
 #include <dirent.h>
 
+#if (CC_TARGET_PLATFORM != CC_PLATFORM_ANDROID)
+#include <ftw.h>
+#endif
+
 bool FileUtils::isDirectoryExistInternal(const std::string& dirPath) const
 {
     struct stat st;
@@ -1156,7 +1160,7 @@ bool FileUtils::createDirectory(const std::string& path)
             }
         }
     }
-
+    
     DIR *dir = NULL;
 
     // Create path recursively
@@ -1187,8 +1191,35 @@ bool FileUtils::createDirectory(const std::string& path)
     return true;
 }
 
+namespace
+{
+#if (CC_TARGET_PLATFORM != CC_PLATFORM_ANDROID)
+    int unlink_cb(const char *fpath, const struct stat *sb, int typeflag, struct FTW *ftwbuf)
+    {
+        int rv = remove(fpath);
+        
+        if (rv)
+            perror(fpath);
+        
+        return rv;
+    }
+#endif
+}
+
 bool FileUtils::removeDirectory(const std::string& path)
 {
+#if !defined(CC_TARGET_OS_TVOS)
+#if (CC_TARGET_PLATFORM != CC_PLATFORM_ANDROID)
+    if (nftw(path.c_str(), unlink_cb, 64, FTW_DEPTH | FTW_PHYS) == -1)
+    {
+        return false;
+    }
+    else
+    {
+        return true;
+    }
+#else
+    
     if (path.size() > 0 && path[path.size() - 1] != '/')
     {
         CCLOGERROR("Fail to remove directory, path must terminate with '/': %s", path.c_str());
@@ -1202,7 +1233,11 @@ bool FileUtils::removeDirectory(const std::string& path)
         return true;
     else
         return false;
+    
+#endif // (CC_TARGET_PLATFORM != CC_PLATFORM_ANDROID)
+#endif // !defined(CC_TARGET_OS_TVOS)
 }
+
 
 bool FileUtils::removeFile(const std::string &path)
 {
