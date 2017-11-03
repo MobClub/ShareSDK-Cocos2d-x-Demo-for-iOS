@@ -2,9 +2,10 @@ LOCAL_PATH := $(call my-dir)
 
 include $(CLEAR_VARS)
 
-$(call import-add-path,D:/cocos2d-x-3.14.1)
-$(call import-add-path,D:/cocos2d-x-3.14.1/external)
-$(call import-add-path,D:/cocos2d-x-3.14.1/cocos)
+$(call import-add-path,D:/C2DConfiguration/310/Cocos2d-x/cocos2d-x-3.10)
+$(call import-add-path,D:/C2DConfiguration/310/Cocos2d-x/cocos2d-x-3.10/external)
+$(call import-add-path,D:/C2DConfiguration/310/Cocos2d-x/cocos2d-x-3.10/cocos)
+
 
 LOCAL_MODULE := cocos2dcpp_shared
 
@@ -23,6 +24,8 @@ LOCAL_C_INCLUDES := $(LOCAL_PATH)/../../Classes \
                     $(LOCAL_PATH)/../../Classes/C2DXShareSDK/Android \
 					$(LOCAL_PATH)/../../Classes/C2DXShareSDK/Android/JSON \
 					$(LOCAL_PATH)/../../Classes/C2DXShareSDK/Android/JSON/cJSON
+
+
 
 # _COCOS_HEADER_ANDROID_BEGIN
 # _COCOS_HEADER_ANDROID_END
